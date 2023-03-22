@@ -1,43 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final bool _loading =true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x004242),
+      backgroundColor: const Color(0x004242),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            SizedBox(
+          children:  <Widget>[
+            const SizedBox(
               height: 50,
             ),
-            Text(
+            const Text(
               'Coding Cafe',
               style: TextStyle(
-                color: Color(0x7D9E9E),
+                color: Colors.white,
                 fontSize: 20
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text(
+            const Text(
               'Cats and Dogs detector App',
               style: TextStyle(
-                color: Color(0x7D9E9E),
+                color: Colors.white,
                 fontWeight: FontWeight.w500,
                 fontSize: 30
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
-            )
+            ),
+            Center(
+              child: _loading ? 
+              SizedBox(
+                width: 400,
+                child: Column(
+                  children: <Widget>[
+                    Image.asset('assets/cat_dog_icon.png'),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
+              ) :
+              Container()
+              )
           ],
         ),
       ),
