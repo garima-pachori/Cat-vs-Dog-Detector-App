@@ -57,6 +57,58 @@ class _HomePageState extends State<HomePage> {
                 ),
               ) :
               Container()
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        width: MediaQuery.of(context).size.width-250,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                          vertical: 18
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.circular(6)
+                        ),
+                        child: const Text(
+                          'Capture a photo',
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        width: MediaQuery.of(context).size.width-250,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                          vertical: 18
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.circular(6)
+                        ),
+                        child: const Text(
+                          ' Select a photo',
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               )
           ],
         ),
