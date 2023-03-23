@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tflite/tflite.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +12,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final bool _loading =true;
+  File ? _image;
+  List ? _output;
+  final picker=ImagePicker();
+
+  detectImage(File image) async {
+    var output=await Tflite.runModelOnImage(
+      path: image.path,
+      numResults: 2,
+      threshold: 0.6,
+      imageMean: 127.5,
+      imageStd: 127.5
+    );
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
