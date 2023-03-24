@@ -118,14 +118,39 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ) :
-              Container()
+              Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 250,
+                    child:  Image.file(_image!),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  _output != null 
+                  ?
+                   Text(
+                    '${_output![0]['label']}',
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.white
+                    ),
+                    ) :
+                    Container(),
+                    const SizedBox(
+                      height: 10,
+                    )
+                ],
+              )
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: <Widget>[
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        pickGalleryImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width-250,
                         alignment: Alignment.center,
@@ -149,7 +174,9 @@ class _HomePageState extends State<HomePage> {
                       height: 15,
                     ),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        pickImage();
+                      },
                       child: Container(
                         width: MediaQuery.of(context).size.width-250,
                         alignment: Alignment.center,
