@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final bool _loading =true;
+  bool _loading =true;
   File ? _image;
   List ? _output;
   final picker=ImagePicker();
@@ -24,9 +24,53 @@ class _HomePageState extends State<HomePage> {
       imageMean: 127.5,
       imageStd: 127.5
     );
+
+    setState(() {
+      _output=output;
+      _loading=false;
+    });
   }
 
-  
+  loadModel() async{
+    await Tflite.loadModel(
+      model: 'assets/model_unquant.tflite',
+      labels: 'assets/labels.txt'
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  pickImage() async {
+    var Image=await picker.getImage(source: ImageSource.camera);
+
+    if(Image==null){
+      return null;
+    }
+
+    setState(() {
+      _image=File(Image.path);
+    });
+
+    detectImage(_image!);
+  }
+
+  pickGalleryImage() async {
+    var Image=await picker.getImage(source: ImageSource.gallery);
+
+    if(Image==null){
+      return null;
+    }
+
+    setState(() {
+      _image=File(Image.path);
+    });
+
+    detectImage(_image!);
+  }
 
   @override
   Widget build(BuildContext context) {
