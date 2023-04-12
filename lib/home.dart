@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tflite/tflite.dart';
+//import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:tflite_flutter/tflite_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadModel() async{
-    await Tflite.loadModel(
+    await TfliteFlutter.loadModel(
       model: 'assets/model_unquant.tflite',
       labels: 'assets/labels.txt'
     );
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0x004242),
+      backgroundColor: const Color(0x00004242),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

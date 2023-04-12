@@ -14,7 +14,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     return  SplashScreen(
       seconds: 2,
-      navigateAfterSeconds: HomePage(),
+      navigateAfterSeconds: const HomePage(),
       title: const Text('Cat and Dog Classifier',
         style: TextStyle(
           fontWeight: FontWeight.bold,
